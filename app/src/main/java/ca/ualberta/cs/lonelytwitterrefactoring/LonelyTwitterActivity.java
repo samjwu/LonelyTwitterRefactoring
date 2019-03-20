@@ -1,4 +1,4 @@
-package ca.ualberta.cs.lonelytwitter;
+package ca.ualberta.cs.lonelytwitterrefactoring;
 
 import java.util.Date;
 import java.util.List;
@@ -40,7 +40,7 @@ public class LonelyTwitterActivity extends Activity {
 		oldTweetsList.setAdapter(adapter);
 	}
 
-	public void save(View v) {
+	public void saveTweet(View v) {
 		String text = bodyText.getText().toString();
 
 		NormalLonelyTweet tweet;
@@ -49,7 +49,7 @@ public class LonelyTwitterActivity extends Activity {
 
 		//TODO: use different sub-classes (Normal or Important) based on usage of "*" in the text.
 		
-		if (tweet.isValid()) {
+		if (tweet.validTweet()) {
 			tweets.add(tweet);
 			adapter.notifyDataSetChanged();
 
@@ -60,7 +60,7 @@ public class LonelyTwitterActivity extends Activity {
 		}
 	}
 
-	public void clear(View v) {
+	public void clearTweets(View v) {
 		tweets.clear();
 		adapter.notifyDataSetChanged();
 		tweetsProvider.saveTweets(tweets);
